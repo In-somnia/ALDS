@@ -16,12 +16,11 @@ public class TestTask1 {
 
     @Test
     public void checkNotFibonacci() {
-        assertEquals(false, task1.FibonacciDetector("1761258"));
+        assertEquals(false, task1.fibonacciFinder("13213413"));
     }
 
     @Test
     public void checkFibonacci() {
-        assertEquals(true, task1.FibonacciDetector("0123518"));
+        assertEquals(true, task1.fibonacciFinder("132134"));
     }
-
 }
