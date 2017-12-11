@@ -14,10 +14,10 @@ public class TestTask3_2 {
         stack.push(8);
         stack.push(10);
 
-        assertEquals(8, stack.getMin());
+        assertEquals(8, stack.min());
         stack.push(7);
-        assertEquals(7, stack.getMin());
+        assertEquals(7, stack.min());
         stack.pop();
-        assertEquals(8, stack.getMin());
+        assertEquals(8, stack.min());
     }
 }

@@ -7,6 +7,7 @@ import java.util.EmptyStackException;
 public class MyStack_Task3_2 {
     private static class StackNode {
         private int data;
+        private int min;
         private StackNode next;
 
         public StackNode(int data) {
@@ -15,46 +16,31 @@ public class MyStack_Task3_2 {
     }
 
     private StackNode top;
-    private int min;
 
-    public int getMin() {
-        return min;
-    }
-
+    @SuppressWarnings("UnusedReturnValue")
     public int pop() {
         if (top == null) throw new EmptyStackException();
-
         int item = top.data;
-        if (top.data == min) {
-            top = top.next;
-            min = top.next.data;
-            while (!isEmpty()) {
-                if (top.data <= min) {
-                    min = top.data;
-                }
-                top = top.next;
-            }
-        }
+        top = top.next;
         return item;
     }
 
     public void push(int item) {
         StackNode t = new StackNode(item);
         if (top == null) {
-            min = item;
+            t.min = item;
         }
         if (top != null && t.data < top.data) {
-            min = t.data;
+            t.min = t.data;
+        } else if (top != null && t.data > top.data) {
+            t.min = top.data;
         }
         t.next = top;
         top = t;
     }
-     public boolean isEmpty() {
-        return top == null;
-     }
 
-     public int peek() {
+    public int min() {
         if (top == null) throw new EmptyStackException();
-        return top.data;
-     }
+        return top.min;
+    }
 }
